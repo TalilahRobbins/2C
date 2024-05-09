@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Media</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.js" integrity="sha512-sqlXizekF8xHbJBFNuI8bFpUAVTs462EfyLgtRXrkdAsVB/xxJ0vcOMXHixzkqfPQolKxVRtvOfaU0g0a6Tpxw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .nav-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .box {
+            background-color: rgb(0, 0, 0);
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 20px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .sk-con {
+            width: 80%;
+            max-width: 600px;
+            height: 400px; /* Adjusted to match typical p5.js canvas size */
+            padding: 20px;
+            margin: 20px;
+            background-color: #ffffff; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        textarea {
+            width: 80%;
+            max-width: 580px;
+            height: 100vh;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            margin-top: 20px;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <a href="https://talilahrobbins.github.io/2C/" class="box">BACK</a>
+    </div>
+
+    
+
+    <textarea placeholder="Quasi-theremin instrument
+    Connect the photoresistor one leg to pin 0, and the other pin to +5V
+    Connect a resistor (around 10k is a good value, higher
+    values gives higher readings) from pin 0 to GND.
+    Connect Speaker (buzzer) to A5 (+ve ) and GND (-ve)
+    ----------------------------------------------------
+               PhotoR     10K
+     +5    o---/\/\/--.--/\/\/---o GND
+                      |
+     Pin A0 o-----------
+     Pin A5 o------+/\/\/--------o GND
+                  Piezo Buzzer
+    ---------------------------------------------------
+    int lightPin = A0; myTone
+    int myTone = 0;
+    int speakerPin = A5;
+    int numTones = 10;
+    int tones[] = {261, 277, 294, 311, 330, 349, 370, 392, 415, 440, 457};
+    int numTones = 11; //Number of tones we are using (ie. length of tones array)
+    String notes[]=;
+    
+    void setup()
+    {
+      Serial.begin(9600);  //Begin serial communcation
+      pinMode(speakerPin, OUTPUT);
+      //setting a calibration brightness of the current room
+      delay(100);
+      maxBrightness = (analogRead(lightPin));
+      Serial.println('calibration value: '+ brightness);
+    }
+    void loop()
+    {  
+      // Read LDR & then Write the value of the photoresistor to the serial monitor to debug.
+      brightness = (analogRead(lightPin));
+      Serial.println(brightness); //debug th ebrightness reading
+      myTone = map(brightness, 50, maxBrightness, 0, 10); //force the values (myTone) to 'cover' the range of the chosen tones - from tones[0] to tones[10]
+      delay(100); //short delay for faster response to light.
+      if (brightness > 50) {
+          tone(speakerPin, tones[myTone], );
+          Serial.println(notes[myTone]); //debug the note the brightness is mapped to
+          delay(10);
+        }
+      else noTone(speakerPin); //if too dark, turn off the tone completely
+      delay(200);                          //pause for 200 millis to allow tone to play and new reading
+    }"></textarea>
+
+    <script src="sketch_flyingballs.js"></script>
+</body>
+</html>
