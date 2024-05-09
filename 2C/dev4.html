@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Media</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.js" integrity="sha512-sqlXizekF8xHbJBFNuI8bFpUAVTs462EfyLgtRXrkdAsVB/xxJ0vcOMXHixzkqfPQolKxVRtvOfaU0g0a6Tpxw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .nav-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .box {
+            background-color: rgb(0, 0, 0);
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 20px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .sk-con {
+            width: 80%;
+            max-width: 600px;
+            height: 400px; /* Adjusted to match typical p5.js canvas size */
+            padding: 20px;
+            margin: 20px;
+            background-color: #ffffff; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        textarea {
+            width: 80%;
+            max-width: 580px;
+            height: 100vh;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            margin-top: 20px;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <a href="https://talilahrobbins.github.io/2C/" class="box">BACK</a>
+    </div>
+
+    
+
+    <textarea placeholder="int ldrPin = A0;
+    int ldrVal = 0;
+    int ledPin = 3;
+    
+    int mappedVal = 0;
+    
+    void setup() {
+      Serial.begin(9600);
+    }
+    
+    void loop() {
+      ldrVal = analogRead(ldrPin);
+      
+      mappedVal = map(ldrVal, 6, 679, 0, 255);
+      
+      analogWrite(ledPin, mappedVal);
+      
+      Serial.println(mappedVal);
+      delay(50);
+    }"></textarea>
+
+    <script src="sketch_flyingballs.js"></script>
+</body>
+</html>
